@@ -2,7 +2,9 @@ FROM php:8.3-fpm
 
 RUN apt-get update && apt-get install -y \
     git unzip libicu-dev zip libpq-dev wget \
-    && docker-php-ext-install intl pdo pdo_pgsql
+    && docker-php-ext-install intl pdo pdo_pgsql \
+    php-xml \
+    && docker-php-ext-install dom
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
